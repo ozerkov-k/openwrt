@@ -132,6 +132,20 @@ define Device/linksys_ea4500
 endef
 TARGET_DEVICES += linksys_ea4500
 
+define Device/netgear_stora
+  DEVICE_VENDOR := NETGEAR
+  DEVICE_MODEL := Stora MS2110 / MS2000
+  BOARD_NAME := netgear_stora
+  DEVICE_PACKAGES := kmod-ata-marvell-sata kmod-fs-ext4 \
+	kmod-rtc-pcf8563 kmod-hwmon-lm75 kmod-hwmon-tc654 \
+	kmod-gpio-button-hotplug \
+	kmod-usb-storage kmod-fs-vfat kmod-fs-exfat \
+	blkid block-mount \
+	mdadm kmod-md-linear kmod-fs-xfs
+  DEVICE_DTS := kirkwood-netgear_stora
+endef
+TARGET_DEVICES += netgear_stora
+
 define Device/raidsonic_ib-nas62x0
   DEVICE_VENDOR := RaidSonic
   DEVICE_MODEL := ICY BOX IB-NAS62x0
