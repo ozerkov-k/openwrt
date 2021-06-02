@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2006-2014 OpenWrt.org
+# Copyright (C) 2006-2021 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -570,3 +570,18 @@ endef
 $(eval $(call KernelPackage,hwmon-adcxx))
 
 
+define KernelPackage/hwmon-tc654
+  TITLE:=Microchip TC654/TC655 PWM fan controller support
+  KCONFIG:=CONFIG_SENSORS_TC654
+  FILES:=$(LINUX_DIR)/drivers/hwmon/tc654.ko
+  AUTOLOAD:=$(call AutoProbe,tc654)
+  $(call AddDepends/hwmon,+kmod-i2c-core)
+endef
+
+define KernelPackage/hwmon-tc654/description
+ Kernel module for Microchip TC654/TC655 PWM fan controller chip
+ The TC654 and TC655 are PWM mode fan speed controllers with
+ FanSense technology for use with brushless DC fans.
+endef
+
+$(eval $(call KernelPackage,hwmon-tc654))
